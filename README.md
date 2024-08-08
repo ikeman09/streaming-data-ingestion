@@ -1,14 +1,5 @@
-# Welcome to your CDK TypeScript project
+# Amazon Kinesis Firehose Streaming Data Setup
+![alt text](image.png)
+This repository contains the necessary configurations and code to set up an streaming data ingestion using Amazon Kinesis Firehose. This setup will also allow you to run ad hoc SQL queries on the data using Amazon Athena.
 
-This is a blank project for CDK development with TypeScript.
-
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
-
-## Useful commands
-
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `npx cdk deploy`  deploy this stack to your default AWS account/region
-* `npx cdk diff`    compare deployed stack with current state
-* `npx cdk synth`   emits the synthesized CloudFormation template
+This is a supporting material to my blog post entitled, Ingest and Query Streaming Data with Amazon Kinesis Firehose and Amazon Athena.
