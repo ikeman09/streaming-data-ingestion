@@ -1,21 +1,23 @@
 #!/usr/bin/env node
-import 'source-map-support/register';
-import * as cdk from 'aws-cdk-lib';
-import { StreamingDataIngestionStack } from '../lib/streaming-data-ingestion-stack';
+import "source-map-support/register";
+import * as cdk from "aws-cdk-lib";
+import { StreamingStack } from "../lib/StreamingStack";
+import { GlueStack } from "../lib/GlueStack";
 
 const app = new cdk.App();
-new StreamingDataIngestionStack(app, 'StreamingDataIngestionStack', {
-  /* If you don't specify 'env', this stack will be environment-agnostic.
-   * Account/Region-dependent features and context lookups will not work,
-   * but a single synthesized template can be deployed anywhere. */
 
-  /* Uncomment the next line to specialize this stack for the AWS Account
-   * and Region that are implied by the current CLI configuration. */
-  // env: { account: process.env.CDK_DEFAULT_ACCOUNT, region: process.env.CDK_DEFAULT_REGION },
+const streaming_stack = new StreamingStack(app, "StreamingStack", {
+	env: {
+		account: "account-id",
+		region: "region",
+	},
+});
 
-  /* Uncomment the next line if you know exactly what Account and Region you
-   * want to deploy the stack to. */
-  // env: { account: '123456789012', region: 'us-east-1' },
+new GlueStack(app, "GlueStack", {
+	env: {
+		account: "account-id",
+		region: "region",
+	},
 
-  /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
+	landing_zone_bucket: streaming_stack.landing_zone_bucket,
 });
